@@ -1,0 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Virtual Environment
+venv/
+env/
+.env
+
+# Data and Results (Tránh push file nặng lên GitHub)
+data/
+results/
+*.pt
+*.pth
+*.bin
+
+# Log files
+*.log
+
+# IDE files
+.vscode/
+.idea/
+.spyderproject
+.pydevproject

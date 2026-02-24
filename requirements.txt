@@ -1,0 +1,23 @@
+# TransMamba-Cls Project Dependencies
+# 3 Encoder Sizes: bert-tiny, bert-small, bert-base (auto-downloaded by HuggingFace)
+
+# Core
+torch>=2.0.0
+numpy>=1.24.0
+
+# HuggingFace (for BERT encoder + GLUE data)
+# Supports: prajjwal1/bert-tiny, prajjwal1/bert-small, bert-base-uncased
+transformers>=4.35.0
+datasets>=2.14.0
+tokenizers>=0.15.0
+
+# Training utilities
+tqdm>=4.65.0
+scikit-learn>=1.3.0
+
+# Efficiency measurement (optional)
+# fvcore>=0.1.5
+
+# Experiment tracking (optional)
+# wandb>=0.15.0
+# tensorboard>=2.14.0
