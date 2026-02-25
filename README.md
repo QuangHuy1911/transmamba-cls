@@ -3,7 +3,7 @@
 **Hybrid Transformer + Mamba for Text Classification on GLUE Benchmark**
 
 > Based on Zhu et al. "TransMamba" (2025)  
-> Fusion: **100% giống paper** | 3 encoder sizes cho scaling analysis
+> Fusion:3 encoder sizes cho scaling analysis
 
 ---
 
@@ -11,10 +11,10 @@
 
 ```
 Input → BERT Encoder (tiny/small/base) → E
-         ├→ TransformerProj(Linear→SiLU→Linear) → E'    [giống paper]
+         ├→ TransformerProj(Linear→SiLU→Linear) → E'    
          └→ MambaDecoder (8L PureSSM, Pre-norm RMSNorm) → H
-              └→ MambaProj(Conv1x1→SiLU→Conv1x1) → H'  [giống paper]
-                   └→ CrossAttention(Q=H', K=E', V=E')  [giống paper]
+              └→ MambaProj(Conv1x1→SiLU→Conv1x1) → H'  
+                   └→ CrossAttention(Q=H', K=E', V=E')  
                         └→ MeanPool → RMSNorm → Classifier
 ```
 
@@ -22,9 +22,9 @@ Input → BERT Encoder (tiny/small/base) → E
 
 | Encoder | HuggingFace | Layers | Hidden | Params | Use case |
 |:--------|:------------|:-------|:-------|:-------|:---------|
-| `bert-tiny` | prajjwal1/bert-tiny | 2 | 128 | ~5M | ⚡ Ablation nhanh |
-| `bert-small` | prajjwal1/bert-small | 4 | 512 | ~30M | ⭐ **Main results** |
-| `bert-base` | bert-base-uncased | 12 | 768 | ~115M | 🎯 Best quality |
+| `bert-tiny` | prajjwal1/bert-tiny | 2 | 128 | ~5M | Ablation nhanh |
+| `bert-small` | prajjwal1/bert-small | 4 | 512 | ~30M |  **Main results** |
+| `bert-base` | bert-base-uncased | 12 | 768 | ~115M |  Best quality |
 
 ## Setup
 
@@ -37,7 +37,7 @@ pip install -r requirements.txt
 ## Quick Start
 
 ```bash
-# ⭐ Main results (bert-small — mặc định)
+# Main results (bert-small — mặc định)
 python train_transmamba.py --task sst2 --epochs 5
 
 # Ablation (bert-tiny — nhanh, CPU ok)
