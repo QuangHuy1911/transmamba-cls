@@ -44,7 +44,7 @@ ABLATION_CONFIGS = [
         "args": ["--fusion", "cross_attention", "--n_mamba_layers", "8", "--freeze_encoder"],
         "description": "Freeze encoder, only train decoder + fusion",
     },
-    # === Encoder Scaling (3 sizes, cross_attention fusion, 8L decoder) ===
+    # === Encoder Scaling (2 sizes, cross_attention fusion, 8L decoder) ===
     {
         "name": "TransMamba-tiny (encoder scaling)",
         "script": "train_transmamba.py",
@@ -52,12 +52,6 @@ ABLATION_CONFIGS = [
         "description": "bert-tiny 2L/128d (~5M) — lightweight baseline",
     },
     # bert-small is already the default in fusion ablation above
-    {
-        "name": "TransMamba-base (encoder scaling)",
-        "script": "train_transmamba.py",
-        "args": ["--encoder", "bert-base", "--fusion", "cross_attention", "--n_mamba_layers", "8", "--batch_size", "16"],
-        "description": "bert-base 12L/768d (~115M) — best quality, needs GPU",
-    },
     # === Baselines ===
     {
         "name": "BERT-tiny Baseline",
