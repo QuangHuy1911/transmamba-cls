@@ -1,14 +1,14 @@
-# TransMamba-Cls v2: Hybrid Transformer + Mamba for Text Classification
+# TransMamba-Cls: Hybrid Transformer + Mamba for Text Classification
 # Based on: Zhu et al. "TransMamba" (2025) — adapted for GLUE text classification
 #
-# v2 Improvements (aligned with paper):
+# Improvements (aligned with paper):
 # 1. Fusion module theo đúng paper: Feature Projection trước Cross-Attention ✅
 # 2. Tăng Mamba decoder: 8 layers (paper: 16L) ✅
 # 3. Default encoder bert-small (paper: 8L custom, ta: 4L pretrained) ✅
 # 4. RMSNorm pre-norm (giống paper) ✅
 # 5. Separate parameter groups cho LR riêng
 #
-# Architecture v2:
+# Architecture:
 #   Input → Encoder(BERT) → E
 #                             ├→ FeatureProjection(E) → E'
 #                             └→ MambaDecoder(E) → H
@@ -97,12 +97,12 @@ class MambaFeatureProjection(nn.Module):
 
 
 # ============================================================================
-# FEATURE FUSION MODULE v2 (đúng theo TransMamba paper)
+# FEATURE FUSION MODULE (đúng theo TransMamba paper)
 # ============================================================================
 
 class CrossAttentionFusionV2(nn.Module):
     """
-    Feature Fusion v2 — đúng theo TransMamba paper (Zhu et al., 2025).
+    Feature Fusion — đúng theo TransMamba paper (Zhu et al., 2025).
     
     Pipeline:
     1. E' = TransformerFeatureProjection(encoder_output)    [Linear → SiLU → Linear]
@@ -149,7 +149,7 @@ class CrossAttentionFusionV2(nn.Module):
 
 class CrossAttentionFusionSimple(nn.Module):
     """
-    Simple Cross-Attention Fusion (v1 — không có feature projection).
+    Simple Cross-Attention Fusion (không có feature projection).
     Giữ lại cho ablation comparison.
     """
     def __init__(self, d_model: int, num_heads: int = 4, dropout: float = 0.1):
@@ -229,8 +229,8 @@ class MambaDecoderStack(nn.Module):
 # ============================================================================
 
 FUSION_METHODS = {
-    "cross_attention": CrossAttentionFusionV2,      # v2 — theo paper (recommended)
-    "cross_attention_simple": CrossAttentionFusionSimple,  # v1 — for ablation
+    "cross_attention": CrossAttentionFusionV2,      # Full — theo paper (recommended)
+    "cross_attention_simple": CrossAttentionFusionSimple,  # Simple — for ablation
     "additive": AdditiveFusion,
     "none": NoFusion,
 }
@@ -251,12 +251,12 @@ ENCODER_PRESETS = {
 
 
 # ============================================================================
-# TRANSMAMBA CLASSIFIER v2
+# TRANSMAMBA CLASSIFIER
 # ============================================================================
 
 class TransMambaClassifier(nn.Module):
     """
-    TransMamba-Cls v2: Hybrid Transformer + Mamba for Text Classification.
+    TransMamba-Cls: Hybrid Transformer + Mamba for Text Classification.
     
     Based on Zhu et al. (2025) "TransMamba" — improved version.
     
@@ -279,7 +279,7 @@ class TransMambaClassifier(nn.Module):
     │  Mean Pooling → RMSNorm → Classifier → logits                   │
     └─────────────────────────────────────────────────────────────────┘
     
-    v2 Changes:
+    Key features:
     - Feature projections trước cross-attention (theo paper)
     - Pre-norm (RMSNorm) trong decoder stack (stability)
     - Hỗ trợ multiple encoder sizes
@@ -340,7 +340,7 @@ class TransMambaClassifier(nn.Module):
             self.fusion_module = fusion_cls(d_model, dropout=dropout)
         
         # ── Component 4: Final Norm + Classifier Head ──
-        self.final_norm = RMSNorm(d_model)   # v2: RMSNorm trước classifier
+        self.final_norm = RMSNorm(d_model)   # RMSNorm trước classifier
         self.classifier = nn.Sequential(
             nn.Linear(d_model, d_model),
             nn.GELU(),
@@ -432,7 +432,7 @@ class TransMambaClassifier(nn.Module):
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("Testing TransMamba-Cls v2 (Aligned with Paper)")
+    print("Testing TransMamba-Cls (Aligned with Paper)")
     print("=" * 60)
     
     # Test all fusion types with bert-tiny (fast, for validation)
@@ -470,15 +470,13 @@ if __name__ == "__main__":
         n_params = sum(p.numel() for p in g["params"])
         print(f"  Group {i}: {n_params:,} params, lr={g['lr']}")
     
-    # Test 3 encoder presets (chiến lược 3 encoder sizes)
-    print(f"\n--- 3 Encoder Presets (Encoder Scaling) ---")
+    # Test encoder presets (2 encoder sizes used in experiments)
+    print(f"\n--- Encoder Presets (Encoder Scaling) ---")
     for name in ["bert-tiny", "bert-small"]:
         model = TransMambaClassifier(encoder_name=name, n_mamba_layers=8)
         print(f"  {name}: d_model={model.d_model}, total={model.count_parameters():,}")
-    # bert-base skipped in test (too large to download in CI)
-    print(f"  bert-base: skipped (110M params — run manually)")
     
     print(f"\n{'=' * 60}")
-    print("✅ All tests passed! (TransMamba-Cls v2 — 3 encoder sizes)")
+    print("✅ All tests passed! (TransMamba-Cls — 2 encoder sizes)")
     print("=" * 60)
 

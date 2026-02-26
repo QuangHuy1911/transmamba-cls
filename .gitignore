@@ -34,3 +34,7 @@ results/**/*.pt
 .idea/
 .spyderproject
 .pydevproject
+
+ban_dich.md
+code.md
+latex.md

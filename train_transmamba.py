@@ -1,4 +1,4 @@
-# Training Script for TransMamba-Cls v2
+# Training Script for TransMamba-Cls
 # With separate LRs, warmup scheduler, improved defaults
 #
 # Usage:
@@ -6,12 +6,12 @@
 #   python train_transmamba.py --task sst2 --encoder bert-small --epochs 5
 #   python train_transmamba.py --task rte --epochs 15 --encoder_lr 5e-4 --decoder_lr 1e-3
 #
-# v2 Changes:
+# Features:
 #   - Separate LR for encoder (5e-4) and decoder (1e-3)
 #   - Warmup scheduler (10% warmup + cosine decay)
-#   - Default 8 Mamba layers (aligned with paper: 16L)
-#   - Default encoder: bert-small (aligned with paper: 8L custom)
-#   - Support 3 encoder sizes: bert-tiny, bert-small, bert-base
+#   - Default 8 Mamba layers (50% of paper's 16L)
+#   - Default encoder: bert-small (50% of paper's 8L custom)
+#   - Support encoder sizes: bert-tiny, bert-small
 
 import argparse
 import os
@@ -108,7 +108,7 @@ def evaluate(model, loader, device, num_labels):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Train TransMamba-Cls v2")
+    parser = argparse.ArgumentParser(description="Train TransMamba-Cls")
     
     # Task & Data
     parser.add_argument("--task", type=str, default="sst2", choices=["sst2", "mnli", "rte"])
@@ -117,13 +117,13 @@ def main():
     
     # Model
     parser.add_argument("--encoder", type=str, default="prajjwal1/bert-small",
-                        help="Encoder: bert-tiny, bert-small, bert-base, or HF model name")
+                        help="Encoder: bert-tiny, bert-small, or HF model name")
     parser.add_argument("--n_mamba_layers", type=int, default=8)    # Gần paper (8L vs paper 16L)
     parser.add_argument("--fusion", type=str, default="cross_attention",
                         choices=["cross_attention", "cross_attention_simple", "additive", "none"])
     parser.add_argument("--freeze_encoder", action="store_true")
     
-    # Training — v2: separate LRs
+    # Training — separate LRs
     parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument("--encoder_lr", type=float, default=5e-4,
                         help="Learning rate for encoder (paper: 5e-4)")
@@ -142,7 +142,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     print("=" * 60)
-    print(f"TransMamba-Cls v2 Training")
+    print(f"TransMamba-Cls Training")
     print(f"  Task: {args.task.upper()}")
     print(f"  Encoder: {args.encoder}")
     print(f"  Mamba layers: {args.n_mamba_layers}")
@@ -167,21 +167,21 @@ def main():
     ).to(device)
     
     info = model.get_model_info()
-    print(f"\nModel: TransMamba-Cls v2 ({args.fusion})")
+    print(f"\nModel: TransMamba-Cls ({args.fusion})")
     print(f"  Total params: {info['total_params']:,}")
     print(f"  Encoder: {info['encoder_params']:,}")
     print(f"  Mamba Decoder: {info['mamba_decoder_params']:,}")
     print(f"  Fusion: {info['fusion_params']:,}")
     print(f"  Classifier: {info['classifier_params']:,}")
     
-    # Optimizer — v2: Separate LRs
+    # Optimizer — Separate LRs
     param_groups = model.get_param_groups(
         encoder_lr=args.encoder_lr,
         decoder_lr=args.decoder_lr,
     )
     optimizer = AdamW(param_groups, weight_decay=args.weight_decay)
     
-    # Scheduler — v2: Linear warmup + Cosine decay
+    # Scheduler — Linear warmup + Cosine decay
     total_steps = len(train_loader) * args.epochs
     warmup_steps = int(total_steps * args.warmup_ratio)
     scheduler = get_warmup_cosine_scheduler(optimizer, warmup_steps, total_steps)
@@ -228,7 +228,7 @@ def main():
     # Save results
     final_results = {
         "model": "TransMamba-Cls",
-        "version": "v2",
+        "version": "full",
         "task": args.task,
         "fusion": args.fusion,
         "encoder": args.encoder,
@@ -246,7 +246,7 @@ def main():
     
     print(f"\n{'='*60}")
     print(f"  Training Complete!")
-    print(f"  Model: TransMamba-Cls v2 ({args.fusion})")
+    print(f"  Model: TransMamba-Cls ({args.fusion})")
     print(f"  Task: {args.task.upper()}")
     print(f"  Best Val Acc: {best_acc*100:.2f}%")
     print(f"  Total Time: {total_time/60:.1f} minutes")

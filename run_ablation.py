@@ -1,4 +1,4 @@
-# Ablation Study Runner v2
+# Ablation Study Runner
 # Chạy tất cả experiments: fusion types, encoder sizes, frozen/unfrozen
 
 import subprocess
@@ -18,13 +18,13 @@ ABLATION_CONFIGS = [
         "name": "TransMamba-small (cross_attention)",
         "script": "train_transmamba.py",
         "args": ["--fusion", "cross_attention", "--n_mamba_layers", "8"],
-        "description": "FULL v2: bert-small + 8L + FeatureProj + CrossAttn (giống paper)",
+        "description": "FULL: bert-small + 8L + FeatureProj + CrossAttn (giống paper)",
     },
     {
         "name": "TransMamba-small (cross_attention_simple)",
         "script": "train_transmamba.py",
         "args": ["--fusion", "cross_attention_simple", "--n_mamba_layers", "8"],
-        "description": "v1 simple cross-attn (no feature projection, for ablation)",
+        "description": "Simple cross-attn (no feature projection, for ablation)",
     },
     {
         "name": "TransMamba-small (additive)",
@@ -92,7 +92,7 @@ def run_experiment(config, task, epochs, seed=42):
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="Run Ablation Studies v2")
+    parser = argparse.ArgumentParser(description="Run Ablation Studies")
     parser.add_argument("--task", type=str, default="sst2", choices=["sst2", "mnli", "rte"])
     parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
@@ -112,7 +112,7 @@ def main():
         configs = [ABLATION_CONFIGS[idx]]
     
     print(f"\n{'#'*70}")
-    print(f"  ABLATION STUDY v2 — {args.task.upper()}")
+    print(f"  ABLATION STUDY — {args.task.upper()}")
     print(f"  Experiments: {len(configs)}")
     print(f"  Epochs: {args.epochs}")
     print(f"  Seed: {args.seed}")
