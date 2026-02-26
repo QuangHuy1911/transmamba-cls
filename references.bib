@@ -1,0 +1,234 @@
+% ===========================================================================
+% references.bib — TransMamba-Cls Paper
+% Copy noi dung nay vao file references.bib tren Overleaf
+% ===========================================================================
+
+% --- Core Architecture Papers ---
+
+@article{vaswani2017attention,
+  title={Attention is all you need},
+  author={Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and
+          Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and
+          Kaiser, {\L}ukasz and Polosukhin, Illia},
+  journal={Advances in Neural Information Processing Systems},
+  volume={30},
+  year={2017}
+}
+
+@inproceedings{devlin2019bert,
+  title={{BERT}: Pre-training of deep bidirectional transformers for
+         language understanding},
+  author={Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and
+          Toutanova, Kristina},
+  booktitle={Proceedings of the 2019 Conference of the North American
+             Chapter of the Association for Computational Linguistics
+             (NAACL-HLT)},
+  pages={4171--4186},
+  year={2019}
+}
+
+% --- State Space Models ---
+
+@inproceedings{gu2022efficiently,
+  title={Efficiently modeling long sequences with structured state spaces},
+  author={Gu, Albert and Goel, Karan and R{\'e}, Christopher},
+  booktitle={Proceedings of the International Conference on Learning
+             Representations (ICLR)},
+  year={2022}
+}
+
+@article{gu2023mamba,
+  title={Mamba: Linear-time sequence modeling with selective state spaces},
+  author={Gu, Albert and Dao, Tri},
+  journal={arXiv preprint arXiv:2312.00752},
+  year={2023}
+}
+
+% --- Hybrid Architecture ---
+
+@article{zhu2025transmamba,
+  title={{TransMamba}: Flexibly Switching between Transformer and Mamba},
+  author={Zhu, Yixuan and Wang, Yuxin and Wang, Xiangyu and
+          Wang, Zhiyuan and Liu, Zheyuan},
+  journal={arXiv preprint arXiv:2501.07948},
+  year={2025}
+}
+
+@article{lieber2024jamba,
+  title={Jamba: A hybrid {Transformer-Mamba} language model},
+  author={Lieber, Opher and Lenz, Barak and Bata, Hofit and
+          Cohen, Gal and Osin, Jhonathan and Dalmedigos, Itay and
+          Safahi, Erez and Meirom, Shaked and Belinkov, Yonatan and
+          Shalev-Shwartz, Shai and Shoham, Yoav},
+  journal={arXiv preprint arXiv:2403.19887},
+  year={2024}
+}
+
+% --- BERT Variants ---
+
+@article{sanh2019distilbert,
+  title={{DistilBERT}, a distilled version of {BERT}: smaller, faster,
+         cheaper and lighter},
+  author={Sanh, Victor and Debut, Lysandre and Chaumond, Julien and
+          Wolf, Thomas},
+  journal={arXiv preprint arXiv:1910.01108},
+  year={2019}
+}
+
+@inproceedings{lan2020albert,
+  title={{ALBERT}: A lite {BERT} for self-supervised learning of
+         language representations},
+  author={Lan, Zhenzhong and Chen, Mingda and Goodman, Sebastian and
+          Gimpel, Kevin and Sharma, Piyush and Soricut, Radu},
+  booktitle={Proceedings of the International Conference on Learning
+             Representations (ICLR)},
+  year={2020}
+}
+
+@article{liu2019roberta,
+  title={{RoBERTa}: A robustly optimized {BERT} pretraining approach},
+  author={Liu, Yinhan and Ott, Myle and Goyal, Naman and Du, Jingfei
+          and Joshi, Mandar and Chen, Danqi and Levy, Omer and Lewis,
+          Mike and Zettlemoyer, Luke and Stoyanov, Veselin},
+  journal={arXiv preprint arXiv:1907.11692},
+  year={2019}
+}
+
+% --- Benchmarks and Datasets ---
+
+@inproceedings{wang2018glue,
+  title={{GLUE}: A multi-task benchmark and analysis platform for
+         natural language understanding},
+  author={Wang, Alex and Singh, Amanpreet and Michael, Julian and
+          Hill, Felix and Levy, Omer and Bowman, Samuel R},
+  booktitle={Proceedings of the International Conference on Learning
+             Representations (ICLR)},
+  year={2019}
+}
+
+@inproceedings{socher2013recursive,
+  title={Recursive deep models for semantic compositionality over a
+         sentiment treebank},
+  author={Socher, Richard and Perelygin, Alex and Wu, Jean and
+          Chuang, Jason and Manning, Christopher D and Ng, Andrew Y
+          and Potts, Christopher},
+  booktitle={Proceedings of the 2013 Conference on Empirical Methods
+             in Natural Language Processing (EMNLP)},
+  pages={1631--1642},
+  year={2013}
+}
+
+@inproceedings{williams2018broad,
+  title={A broad-coverage challenge corpus for sentence understanding
+         through inference},
+  author={Williams, Adina and Nangia, Nikita and Bowman, Samuel R},
+  booktitle={Proceedings of the 2018 Conference of the North American
+             Chapter of the Association for Computational Linguistics
+             (NAACL-HLT)},
+  pages={1112--1122},
+  year={2018}
+}
+
+@incollection{dagan2005pascal,
+  title={The {PASCAL} recognising textual entailment challenge},
+  author={Dagan, Ido and Glickman, Oren and Magnini, Bernardo},
+  booktitle={Machine Learning Challenges. Evaluating Predictive
+             Uncertainty, Visual Object Classification, and Recognising
+             Textual Entailment},
+  pages={177--190},
+  year={2006},
+  publisher={Springer}
+}
+
+@inproceedings{bar2006second,
+  title={The second {PASCAL} recognising textual entailment challenge},
+  author={Bar-Haim, Roy and Dagan, Ido and Dolan, Bill and
+          Ferro, Lisa and Giampiccolo, Danilo and Magnini, Bernardo
+          and Szpektor, Idan},
+  booktitle={Proceedings of the Second PASCAL Challenges Workshop on
+             Recognising Textual Entailment},
+  year={2006}
+}
+
+@inproceedings{giampiccolo2007third,
+  title={The third {PASCAL} recognizing textual entailment challenge},
+  author={Giampiccolo, Danilo and Magnini, Bernardo and Dagan, Ido
+          and Dolan, Bill},
+  booktitle={Proceedings of the ACL-PASCAL Workshop on Textual
+             Entailment and Paraphrasing},
+  pages={1--9},
+  year={2007}
+}
+
+@inproceedings{bentivogli2009fifth,
+  title={The fifth {PASCAL} recognizing textual entailment challenge},
+  author={Bentivogli, Luisa and Clark, Peter and Dagan, Ido and
+          Giampiccolo, Danilo},
+  booktitle={Proceedings of TAC},
+  year={2009}
+}
+
+% --- Efficient Transformers ---
+
+@inproceedings{zaheer2020big,
+  title={{Big Bird}: Transformers for longer sequences},
+  author={Zaheer, Manzil and Guruganesh, Guru and Dubey, Kumar Avinava
+          and Ainslie, Joshua and Alberti, Chris and Ontanon, Santiago
+          and Pham, Philip and Ravula, Anirudh and Wang, Qifan and
+          Yang, Li and Ahmed, Amr},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  year={2020}
+}
+
+@article{beltagy2020longformer,
+  title={Longformer: The long-document transformer},
+  author={Beltagy, Iz and Peters, Matthew E and Cohan, Arman},
+  journal={arXiv preprint arXiv:2004.05150},
+  year={2020}
+}
+
+% --- Normalization and Optimization ---
+
+@inproceedings{zhang2019root,
+  title={Root mean square layer normalization},
+  author={Zhang, Biao and Sennrich, Rico},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  volume={32},
+  year={2019}
+}
+
+@inproceedings{loshchilov2019decoupled,
+  title={Decoupled weight decay regularization},
+  author={Loshchilov, Ilya and Hutter, Frank},
+  booktitle={Proceedings of the International Conference on Learning
+             Representations (ICLR)},
+  year={2019}
+}
+
+% --- Mamba for NLP ---
+
+@article{he2024densemamba,
+  title={{DenseMamba}: State space models with dense hidden connection
+         for efficient large language models},
+  author={He, Wei and Dai, Kai and Lu, Yifei and Wang, Xin and
+          Liu, Jiahao and Liu, Ji and Ye, Han},
+  journal={arXiv preprint arXiv:2403.00818},
+  year={2024}
+}
+
+@article{anthony2024blackmamba,
+  title={{BlackMamba}: Mixture of experts for state-space models},
+  author={Anthony, Quentin and Tokpanov, Yury and Glorioso, Paulo
+          and Pilault, Jonathan},
+  journal={arXiv preprint arXiv:2402.01771},
+  year={2024}
+}
+
+@article{park2024mamba,
+  title={Can {Mamba} learn how to learn? A comparative study on in-context
+         learning tasks},
+  author={Park, Jongho and Park, Jaeseung and Xiong, Zheyang and
+          Papailiopoulos, Dimitris and Lee, Jason D},
+  journal={arXiv preprint arXiv:2402.04248},
+  year={2024}
+}

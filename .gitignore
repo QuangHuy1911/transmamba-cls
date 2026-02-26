@@ -17,12 +17,14 @@ venv/
 env/
 .env
 
-# Data and Results (Tránh push file nặng lên GitHub)
-data/
-results/
+# Model weights (quá nặng cho GitHub)
 *.pt
 *.pth
 *.bin
+
+# Results: giữ cấu trúc folder, bỏ qua nội dung nặng
+results/**/*.json
+results/**/*.pt
 
 # Log files
 *.log

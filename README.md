@@ -3,7 +3,7 @@
 **Hybrid Transformer + Mamba for Text Classification on GLUE Benchmark**
 
 > Based on Zhu et al. "TransMamba" (2025)  
-> Fusion:3 encoder sizes cho scaling analysis
+> Fusion: **100% giống paper** | 3 encoder sizes cho scaling analysis
 
 ---
 
@@ -22,7 +22,7 @@ Input → BERT Encoder (tiny/small/base) → E
 
 | Encoder | HuggingFace | Layers | Hidden | Params | Use case |
 |:--------|:------------|:-------|:-------|:-------|:---------|
-| `bert-tiny` | prajjwal1/bert-tiny | 2 | 128 | ~5M | Ablation nhanh |
+| `bert-tiny` | prajjwal1/bert-tiny | 2 | 128 | ~5M |  Ablation nhanh |
 | `bert-small` | prajjwal1/bert-small | 4 | 512 | ~30M |  **Main results** |
 | `bert-base` | bert-base-uncased | 12 | 768 | ~115M |  Best quality |
 
@@ -37,7 +37,7 @@ pip install -r requirements.txt
 ## Quick Start
 
 ```bash
-# Main results (bert-small — mặc định)
+# ⭐ Main results (bert-small — mặc định)
 python train_transmamba.py --task sst2 --epochs 5
 
 # Ablation (bert-tiny — nhanh, CPU ok)
