@@ -14,7 +14,7 @@ from torch.optim import AdamW
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from sklearn.metrics import accuracy_score, f1_score
 from tqdm import tqdm
-from transformers import AutoModelForSequenceClassification
+from transformers import BertForSequenceClassification
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from data.glue_loader import get_glue_dataloaders
@@ -103,7 +103,7 @@ def main():
         task=args.task, batch_size=args.batch_size, max_length=args.max_length,
     )
     
-    model = AutoModelForSequenceClassification.from_pretrained(
+    model = BertForSequenceClassification.from_pretrained(
         args.model_name, num_labels=num_labels,
     ).to(device)
     

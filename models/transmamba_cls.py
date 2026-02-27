@@ -20,7 +20,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
-from transformers import AutoModel, AutoConfig
+from transformers import BertModel, AutoConfig
 import sys
 import os
 
@@ -311,7 +311,7 @@ class TransMambaClassifier(nn.Module):
         self.num_labels = num_labels
         
         # ── Component 1: Transformer Encoder (pretrained) ──
-        self.encoder = AutoModel.from_pretrained(encoder_name)
+        self.encoder = BertModel.from_pretrained(encoder_name)
         d_model = self.encoder.config.hidden_size
         self.d_model = d_model
         
