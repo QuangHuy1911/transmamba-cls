@@ -4,10 +4,10 @@
 # Usage:
 #   python train_transmamba.py --task sst2 --fusion cross_attention --epochs 5
 #   python train_transmamba.py --task sst2 --encoder bert-small --epochs 5
-#   python train_transmamba.py --task rte --epochs 15 --encoder_lr 5e-4 --decoder_lr 1e-3
+#   python train_transmamba.py --task rte --epochs 15 --encoder_lr 2e-5 --decoder_lr 5e-4
 #
 # Features:
-#   - Separate LR for encoder (5e-4) and decoder (1e-3)
+#   - Separate LR for encoder (2e-5) and decoder (5e-4)
 #   - Warmup scheduler (10% warmup + cosine decay)
 #   - Default 8 Mamba layers (50% of paper's 16L)
 #   - Default encoder: bert-small (50% of paper's 8L custom)
@@ -125,10 +125,10 @@ def main():
     
     # Training — separate LRs
     parser.add_argument("--epochs", type=int, default=5)
-    parser.add_argument("--encoder_lr", type=float, default=5e-4,
-                        help="Learning rate for encoder (paper: 5e-4)")
-    parser.add_argument("--decoder_lr", type=float, default=1e-3,
-                        help="Learning rate for decoder+fusion (paper: 1e-3)")
+    parser.add_argument("--encoder_lr", type=float, default=2e-5,
+                        help="Learning rate for pretrained encoder (fine-tuning)")
+    parser.add_argument("--decoder_lr", type=float, default=5e-4,
+                        help="Learning rate for decoder+fusion (train from scratch)")
     parser.add_argument("--weight_decay", type=float, default=0.01)
     parser.add_argument("--warmup_ratio", type=float, default=0.1,
                         help="Warmup ratio (10%% of total steps)")

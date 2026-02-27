@@ -388,7 +388,7 @@ class TransMambaClassifier(nn.Module):
         
         return {"loss": loss, "logits": logits}
     
-    def get_param_groups(self, encoder_lr=5e-4, decoder_lr=1e-3):
+    def get_param_groups(self, encoder_lr=2e-5, decoder_lr=5e-4):
         """Separate parameter groups for different learning rates (theo paper)."""
         encoder_params = list(self.encoder.parameters())
         decoder_params = (
@@ -465,7 +465,7 @@ if __name__ == "__main__":
     # Test param groups
     print(f"\n--- Param Groups (bert-tiny, 8L) ---")
     model = TransMambaClassifier(encoder_name="prajjwal1/bert-tiny", n_mamba_layers=8)
-    groups = model.get_param_groups(encoder_lr=5e-4, decoder_lr=1e-3)
+    groups = model.get_param_groups(encoder_lr=2e-5, decoder_lr=5e-4)
     for i, g in enumerate(groups):
         n_params = sum(p.numel() for p in g["params"])
         print(f"  Group {i}: {n_params:,} params, lr={g['lr']}")
