@@ -1,0 +1,84 @@
+{
+  "model": "TransMamba-Cls",
+  "version": "full",
+  "task": "sst2",
+  "fusion": "cross_attention",
+  "encoder": "prajjwal1/bert-small",
+  "best_val_acc": 0.841743119266055,
+  "total_params": 16979970,
+  "total_time_minutes": 136.6591702779134,
+  "seed": 42,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.4586970597647148,
+      "train_acc": 0.7834860205793701,
+      "val_loss": 0.46119305917194914,
+      "val_acc": 0.7706422018348624,
+      "val_f1": 0.7991967871485943,
+      "time": 1641.5712583065033
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.4149562842064402,
+      "train_acc": 0.810494587892916,
+      "val_loss": 0.4229459453906332,
+      "val_acc": 0.8211009174311926,
+      "val_f1": 0.8270509977827051,
+      "time": 1646.3842287063599
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.37357052208196523,
+      "train_acc": 0.8342217404861245,
+      "val_loss": 0.43018315359950066,
+      "val_acc": 0.8245412844036697,
+      "val_f1": 0.830939226519337,
+      "time": 1633.3166439533234
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.3403523167351929,
+      "train_acc": 0.8521433131895054,
+      "val_loss": 0.41371924696224077,
+      "val_acc": 0.841743119266055,
+      "val_f1": 0.8463251670378619,
+      "time": 1641.476583480835
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.3117280578634518,
+      "train_acc": 0.8660262216217018,
+      "val_loss": 0.40447299980691503,
+      "val_acc": 0.8360091743119266,
+      "val_f1": 0.8395061728395061,
+      "time": 1634.2658121585846
+    }
+  ],
+  "config": {
+    "task": "sst2",
+    "max_length": 128,
+    "batch_size": 32,
+    "encoder": "prajjwal1/bert-small",
+    "n_mamba_layers": 8,
+    "fusion": "cross_attention",
+    "freeze_encoder": true,
+    "epochs": 5,
+    "encoder_lr": 2e-05,
+    "decoder_lr": 0.0005,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "grad_clip": 1.0,
+    "seed": 42
+  },
+  "model_info": {
+    "encoder_name": "prajjwal1/bert-small",
+    "d_model": 512,
+    "fusion_type": "cross_attention",
+    "total_params": 16979970,
+    "encoder_params": 28763648,
+    "mamba_decoder_params": 13561856,
+    "fusion_params": 3153920,
+    "classifier_params": 264194
+  }
+}

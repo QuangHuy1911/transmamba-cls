@@ -1,0 +1,84 @@
+{
+  "model": "TransMamba-Cls",
+  "version": "full",
+  "task": "sst2",
+  "fusion": "none",
+  "encoder": "prajjwal1/bert-small",
+  "best_val_acc": 0.8715596330275229,
+  "total_params": 42590722,
+  "total_time_minutes": 137.71485002835593,
+  "seed": 42,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.3575317548795862,
+      "train_acc": 0.8411112265957921,
+      "val_loss": 0.40618967690638136,
+      "val_acc": 0.8474770642201835,
+      "val_f1": 0.8604407135362014,
+      "time": 1649.5179872512817
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.21023771320679832,
+      "train_acc": 0.9214836151984439,
+      "val_loss": 0.38477593420871664,
+      "val_acc": 0.8669724770642202,
+      "val_f1": 0.8651162790697674,
+      "time": 1642.7666754722595
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.15247044087942876,
+      "train_acc": 0.9471707078056096,
+      "val_loss": 0.3575513055548072,
+      "val_acc": 0.8692660550458715,
+      "val_f1": 0.87248322147651,
+      "time": 1651.5673606395721
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.10893591014179456,
+      "train_acc": 0.964424119140596,
+      "val_loss": 0.5072071699957762,
+      "val_acc": 0.8715596330275229,
+      "val_f1": 0.8752783964365256,
+      "time": 1650.2933316230774
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0822789742960318,
+      "train_acc": 0.9750256128524551,
+      "val_loss": 0.541810503429068,
+      "val_acc": 0.8681192660550459,
+      "val_f1": 0.8740416210295728,
+      "time": 1666.2988317012787
+    }
+  ],
+  "config": {
+    "task": "sst2",
+    "max_length": 128,
+    "batch_size": 32,
+    "encoder": "prajjwal1/bert-small",
+    "n_mamba_layers": 8,
+    "fusion": "none",
+    "freeze_encoder": false,
+    "epochs": 5,
+    "encoder_lr": 2e-05,
+    "decoder_lr": 0.0005,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "grad_clip": 1.0,
+    "seed": 42
+  },
+  "model_info": {
+    "encoder_name": "prajjwal1/bert-small",
+    "d_model": 512,
+    "fusion_type": "none",
+    "total_params": 42590722,
+    "encoder_params": 28763648,
+    "mamba_decoder_params": 13561856,
+    "fusion_params": 1024,
+    "classifier_params": 264194
+  }
+}

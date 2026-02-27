@@ -1,0 +1,84 @@
+{
+  "model": "TransMamba-Cls",
+  "version": "full",
+  "task": "sst2",
+  "fusion": "cross_attention_simple",
+  "encoder": "prajjwal1/bert-small",
+  "best_val_acc": 0.8772935779816514,
+  "total_params": 43641346,
+  "total_time_minutes": 139.10279863675436,
+  "seed": 42,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.36134235699641165,
+      "train_acc": 0.8401758006800398,
+      "val_loss": 0.34874378836580683,
+      "val_acc": 0.8486238532110092,
+      "val_f1": 0.8443396226415094,
+      "time": 1666.25958609581
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.2398274336169494,
+      "train_acc": 0.9075710107054299,
+      "val_loss": 0.3732003303510802,
+      "val_acc": 0.8555045871559633,
+      "val_f1": 0.8615384615384616,
+      "time": 1664.9684491157532
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.17863442757622627,
+      "train_acc": 0.9346538181710197,
+      "val_loss": 0.3357984192137207,
+      "val_acc": 0.8715596330275229,
+      "val_f1": 0.8763796909492274,
+      "time": 1674.877703666687
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.1339027589474608,
+      "train_acc": 0.9533326404252476,
+      "val_loss": 0.45013211853802204,
+      "val_acc": 0.8772935779816514,
+      "val_f1": 0.8820286659316428,
+      "time": 1654.0974130630493
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.11249923121810154,
+      "train_acc": 0.961885105940697,
+      "val_loss": 0.4793344749403851,
+      "val_acc": 0.8692660550458715,
+      "val_f1": 0.8760869565217392,
+      "time": 1683.5027718544006
+    }
+  ],
+  "config": {
+    "task": "sst2",
+    "max_length": 128,
+    "batch_size": 32,
+    "encoder": "prajjwal1/bert-small",
+    "n_mamba_layers": 8,
+    "fusion": "cross_attention_simple",
+    "freeze_encoder": false,
+    "epochs": 5,
+    "encoder_lr": 2e-05,
+    "decoder_lr": 0.0005,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "grad_clip": 1.0,
+    "seed": 42
+  },
+  "model_info": {
+    "encoder_name": "prajjwal1/bert-small",
+    "d_model": 512,
+    "fusion_type": "cross_attention_simple",
+    "total_params": 43641346,
+    "encoder_params": 28763648,
+    "mamba_decoder_params": 13561856,
+    "fusion_params": 1051648,
+    "classifier_params": 264194
+  }
+}

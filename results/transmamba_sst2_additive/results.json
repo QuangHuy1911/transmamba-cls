@@ -1,0 +1,84 @@
+{
+  "model": "TransMamba-Cls",
+  "version": "full",
+  "task": "sst2",
+  "fusion": "additive",
+  "encoder": "prajjwal1/bert-small",
+  "best_val_acc": 0.8772935779816514,
+  "total_params": 42590722,
+  "total_time_minutes": 138.9596924026807,
+  "seed": 42,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.36089431592960114,
+      "train_acc": 0.8403688250753537,
+      "val_loss": 0.48701135388442446,
+      "val_acc": 0.8337155963302753,
+      "val_f1": 0.850669412976313,
+      "time": 1693.9293174743652
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.2354759414217959,
+      "train_acc": 0.9104069845135043,
+      "val_loss": 0.37485258733587606,
+      "val_acc": 0.8623853211009175,
+      "val_f1": 0.8660714285714286,
+      "time": 1666.4484796524048
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.15982521115857531,
+      "train_acc": 0.9437853568724108,
+      "val_loss": 0.34934784432074856,
+      "val_acc": 0.8772935779816514,
+      "val_f1": 0.881243063263041,
+      "time": 1659.6285490989685
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.11890261199960216,
+      "train_acc": 0.960801199720857,
+      "val_loss": 0.5138861872255802,
+      "val_acc": 0.875,
+      "val_f1": 0.8782122905027933,
+      "time": 1672.572866678238
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.09672401424512851,
+      "train_acc": 0.9687894400807733,
+      "val_loss": 0.5294163906946778,
+      "val_acc": 0.875,
+      "val_f1": 0.8792912513842747,
+      "time": 1643.2638280391693
+    }
+  ],
+  "config": {
+    "task": "sst2",
+    "max_length": 128,
+    "batch_size": 32,
+    "encoder": "prajjwal1/bert-small",
+    "n_mamba_layers": 8,
+    "fusion": "additive",
+    "freeze_encoder": false,
+    "epochs": 5,
+    "encoder_lr": 2e-05,
+    "decoder_lr": 0.0005,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "grad_clip": 1.0,
+    "seed": 42
+  },
+  "model_info": {
+    "encoder_name": "prajjwal1/bert-small",
+    "d_model": 512,
+    "fusion_type": "additive",
+    "total_params": 42590722,
+    "encoder_params": 28763648,
+    "mamba_decoder_params": 13561856,
+    "fusion_params": 1024,
+    "classifier_params": 264194
+  }
+}
