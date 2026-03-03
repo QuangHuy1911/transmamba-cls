@@ -40,9 +40,9 @@ Input → BERT Encoder (pretrained) → E
 | Cross-Attn + Proj | 84.17% | 56.32% |
 
 ### Key Findings
-- ✅ TransMamba > Pure Mamba > BERT on both tasks
-- ✅ Encoder scaling (tiny→small): +4–5% improvement
-- ✅ Fusion is task-dependent: simple methods work for short sequences, cross-attention benefits longer sequences
+- TransMamba > Pure Mamba > BERT on both tasks
+- Encoder scaling (tiny→small): +4–5% improvement
+- Fusion is task-dependent: simple methods work for short sequences, cross-attention benefits longer sequences
 
 ## Encoder Configurations
 
