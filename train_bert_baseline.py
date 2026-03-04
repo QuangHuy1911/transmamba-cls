@@ -1,4 +1,4 @@
-# Training Script for BERT-tiny Baseline (Pure Transformer)
+# Training Script for Encoder-only Baselines (BERT, DistilBERT, ALBERT, etc.)
 # Usage: python train_bert_baseline.py --task sst2 --epochs 5
 
 import argparse
@@ -14,7 +14,7 @@ from torch.optim import AdamW
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from sklearn.metrics import accuracy_score, f1_score
 from tqdm import tqdm
-from transformers import BertForSequenceClassification
+from transformers import AutoModelForSequenceClassification
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from data.glue_loader import get_glue_dataloaders
@@ -103,7 +103,7 @@ def main():
         task=args.task, batch_size=args.batch_size, max_length=args.max_length,
     )
     
-    model = BertForSequenceClassification.from_pretrained(
+    model = AutoModelForSequenceClassification.from_pretrained(
         args.model_name, num_labels=num_labels,
     ).to(device)
     
