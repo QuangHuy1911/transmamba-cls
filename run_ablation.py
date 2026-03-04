@@ -60,6 +60,12 @@ ABLATION_CONFIGS = [
         "description": "Pure BERT-tiny fine-tuning (4.4M params)",
     },
     {
+        "name": "BERT-small Baseline",
+        "script": "train_bert_baseline.py",
+        "args": ["--model_name", "prajjwal1/bert-small"],
+        "description": "Pure BERT-small fine-tuning (28.8M params) — fair comparison with TransMamba-small",
+    },
+    {
         "name": "Pure Mamba Baseline",
         "script": "train_mamba_baseline.py",
         "args": [],
